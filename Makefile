@@ -6,7 +6,7 @@
 #    By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 09:53:25 by rbulanad          #+#    #+#              #
-#    Updated: 2022/11/23 12:07:08 by rbulanad         ###   ########.fr        #
+#    Updated: 2022/11/24 11:18:09 by rbulanad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,8 @@ SOURCES = ft_isalpha.c \
 		  ft_putstr_fd.c \
 		  ft_putendl_fd.c \
 		  ft_putnbr_fd.c \
-		  ft_itoa.c
+		  ft_itoa.c \
+		  ft_split.c
 OBJECTS = ${SOURCES:.c=.o}
 RM 		= rm -f
 CC 		= gcc
