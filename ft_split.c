@@ -6,31 +6,35 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:01:22 by rbulanad          #+#    #+#             */
-/*   Updated: 2022/11/25 16:55:24 by rbulanad         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:47:41 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	countmots(char const *s, char c)
+static int	countwrd(char const *s, char c)
 {
 	int	i;
-	int	mots;
+	int	word;
 
 	i = 0;
-	mots = 0;
+	word = 0;
+	if (s[i] == c)
+		i++;
 	if (s[0] != c)
-		mots++;
+		word++;
 	while (s[i])
 	{
-		if (s[i - 1] == c && s[i] != c)
-			mots++;
+		if (s[i + 1] != c && s[i] == c)
+			word++;
 		i++;
 	}
-	return (mots);
+	if (s[0] != c && word == 2)
+		word--;
+	return (word);
 }
 
-char	*substr2(char const *s, int start, int end)
+static char	*substr2(char const *s, int start, int end)
 {
 	char	*ret;
 	int		i;
@@ -47,15 +51,15 @@ char	*substr2(char const *s, int start, int end)
 	return (ret);
 }
 
-void	write_tab(char **tab, char const *s, char c)
+static void	write_tab(char **tab, char const *s, char c)
 {
 	int	i;
-	int	mots;
+	int	word;
 	int	depart;
 	int	end;
 
 	i = 0;
-	mots = 0;
+	word = 0;
 	while (s[i])
 	{
 		while (s[i] == c && s[i])
@@ -66,21 +70,21 @@ void	write_tab(char **tab, char const *s, char c)
 			while (s[i] != c && s[i])
 				i++;
 			end = i;
-			tab[mots++] = substr2(s, depart, end);
+			tab[word++] = substr2(s, depart, end);
 		}
 	}
-	tab[mots] = NULL;
+	tab[word] = NULL;
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**tab;
-	int		mots;
+	int		word;
 
 	if (!s)
 		return (NULL);
-	mots = countmots (s, c);
-	tab = malloc((mots + 1) * sizeof(char *));
+	word = countwrd (s, c);
+	tab = malloc((word + 1) * sizeof(char *));
 	if (!tab)
 		return (NULL);
 	write_tab(tab, s, c);
@@ -93,11 +97,11 @@ int main ()
 	int	i;
 
 	i = 0;
-	tab = ft_split("mikomimijiji", 'i');
+	tab = ft_split("--1-2-----3----4---5--42", '-');
 	while (tab[i])
 	{
 		printf("%s\n", tab[i]);
 		i++;
 	}
-	printf("%s", tab[]);
+	printf("%s", tab[i]);
 }*/
