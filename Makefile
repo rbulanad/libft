@@ -6,7 +6,7 @@
 #    By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 09:53:25 by rbulanad          #+#    #+#              #
-#    Updated: 2022/11/24 11:18:09 by rbulanad         ###   ########.fr        #
+#    Updated: 2023/01/06 12:13:33 by rbulanad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,16 @@ SOURCES = ft_isalpha.c \
 		  ft_putendl_fd.c \
 		  ft_putnbr_fd.c \
 		  ft_itoa.c \
-		  ft_split.c
+		  ft_split.c \
+		  ft_lstnew_bonus.c \
+		  ft_lstadd_front_bonus.c \
+		  ft_lstsize_bonus.c \
+		  ft_lstlast_bonus.c \
+		  ft_lstadd_back_bonus.c \
+		  ft_lstdelone_bonus.c \
+		  ft_lstclear_bonus.c \
+		  ft_lstiter_bonus.c \
+		  ft_lstmap_bonus.c
 OBJECTS = ${SOURCES:.c=.o}
 RM 		= rm -f
 CC 		= gcc
@@ -58,6 +67,8 @@ ${NAME}: ${OBJECTS}
 	 ar rc ${NAME} ${OBJECTS}
 
 all: ${NAME}
+
+bonus: ${NAME}
 	
 clean:
 	${RM} ${OBJECTS}
